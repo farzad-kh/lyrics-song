@@ -1,0 +1,393 @@
+* {
+  box-sizing: border-box;
+  transition: all 250ms ease-out;
+}
+
+:root {
+  --gray: #565555;
+  --mainPink:  linear-gradient(45deg, #f286ca 0%, rgba(255, 0, 0, 0.38) 100%)
+}
+
+::after,
+::before {
+  transition: all 250ms ease-out;
+}
+
+body {
+  background-color: #f9f9f9;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+header {
+  background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+header * {
+  z-index: 1;
+}
+
+header h1 {
+  margin: 0 0 30px;
+}
+
+form {
+  position: relative;
+  width: 540px;
+  max-width: 100%;
+}
+
+form input {
+  border: 0;
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 15px 30px;
+  width: 100%;
+}
+
+form button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: #f994a4;
+  border: 0;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  padding: 13px 30px;
+}
+
+.btn {
+  /* background-color: #3e81bcde; */
+  background: var(--mainPink);
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  padding: 9px 11px;
+
+
+}
+
+ul.songs {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.songs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  padding:7px 20px 7px 5px;
+  transition: all 0.3s ease-in;
+  box-shadow:0 0 15px rgb(231, 230, 230) ;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.songs li:nth-child(2n){
+  /* box-shadow:0 0 15px rgba(231, 230, 230, 0.936) */
+  box-shadow:0 0 15px rgba(241, 240, 240, 0.9);
+}
+
+ul.songs li:hover .btn {}
+
+ul.songs li:hover img {
+  transform: scale(1.1)
+}
+
+ul.songs li:hover .cover-lr {}
+
+.container {
+  margin: 30px auto;
+  max-width: 100%;
+  width: 580px;
+}
+
+.container h2 {
+  font-weight: 300;
+}
+
+.container p {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.centered button {
+  /* background:  linear-gradient(45deg, #f286ca 0%, #97c4db 100%); */
+  margin: 15px;
+  background: linear-gradient(45deg, #f286ca 0%, rgba(255, 0, 0, 0.38) 100%)
+;padding: 10px 15px 10px 15px;
+font-size: 1rem;
+
+}
+
+.cover-lr {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+  pointer-events: none;
+}
+
+.cover-lr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+#preview-container {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+}
+
+.volume {
+  width: 94px;
+}
+
+.action-btn {
+  border-radius: 50%;
+  appearance: none;
+  border: none;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: transparent;
+  padding: 0;
+
+}
+
+.action-btn i {
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+.fa-play::before{
+  pointer-events: none;
+}
+
+ul.songs li:hover .action-btn {
+  background-color: rgba(0, 0, 0, .2);
+  backdrop-filter: blur(1px)opacity(50%);
+}
+
+ul.songs li:hover .action-btn i {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.volume-icons-container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 0;
+  width: 80px;
+  justify-content: center;
+  position: absolute;
+  right: -10px;
+  top: 50px;
+}
+
+.volume-icons-container+span {
+  color: #fff;
+}
+/* background-color: rgba(0, 0, 0, .2);
+backdrop-filter: blur(1px)opacity(50%); */
+
+.volume-icons-container.active {
+  height: 20px
+ 
+}
+
+/* play action-btn action-btn-big */
+
+.show{
+  background-color: rgba(0, 0, 0, .2) !important;
+backdrop-filter: blur(1px)opacity(50%) !important;
+
+}
+.play.show i{
+  opacity: 1 !important;
+}
+
+.vol-icon {
+  position: absolute;
+  left: 0px;
+  font-size: 0.7rem;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.volume[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 55px;
+  margin: 0;
+  transform: translateX(5px);
+
+}
+
+/* Removes default focus */
+.volume[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+.volume[type="range"]::-webkit-slider-runnable-track {
+  background-color: #add8e6;
+  border-radius: 0.3rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+.volume[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  margin-top: -4px;
+  /* Centers thumb on the track */
+  background-color: #808080;
+  border-radius: 0.5rem;
+  height: 0.7rem;
+  width: 0.7rem;
+}
+
+.volume[type="range"]:focus::-webkit-slider-thumb {
+
+  outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+.volume[type="range"]::-moz-range-track {
+  background-color: #add8e6;
+  /* background-color: var(--mainPink); */
+  border-radius: 0.3rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+.volume[type="range"]::-moz-range-thumb {
+  background-color: #808080;
+  border: none;
+  /*Removes extra border that FF applies*/
+  border-radius: 0.5rem;
+  height: 0.7rem;
+  width: 0.7rem;
+}
+
+.volume[type="range"]:focus::-moz-range-thumb {
+
+  outline-offset: 0.125rem;
+}
+
+
+
+.btn{
+  position: relative;
+}
+.btn::after{
+
+}
+.btn.load{
+  padding-right: 27px;
+}
+.btn.load.btn::after{
+  content: "";
+  background-color: #fc9b9b;
+position: absolute;
+top: 11px;
+bottom: auto;
+right: 6px;
+  border: 3px solid #fff;
+  border-radius: 50px;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  -webkit-border-left-color: transparent ;
+  -ms-border-left-color: transparent ;
+  -o-border-left-color: transparent ;
+  border-left-color: transparent !important;
+  animation: load161 1s linear infinite, color 2s ease infinite;
+}
+
+
+@keyframes color {
+
+}
+
+@keyframes load161 {
+  0% {
+    -ms-transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load2812 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
