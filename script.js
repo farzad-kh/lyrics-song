@@ -47,18 +47,7 @@ const liSong=document.createElement("li")
       `
       ulSong.append(liSong)
   })
-  if (songs.prev || songs.next) {
-    more.innerHTML = `
-      ${      
-         songs.prev ? `<button class="btn" onclick="getMoreSongs('${songs.prev}')">Prev</button>` : ''
-      }
-      ${
-        songs.next ? `<button class="btn" onclick="getMoreSongs('${songs.next}')">Next</button>`: ''  
-      }
-    `;
-  } else {
-    more.innerHTML = '';
-  }
+ 
   result.append(ulSong)
 
 resultTrim(result)
@@ -275,7 +264,7 @@ form.onsubmit = (e) => {
   e.preventDefault()
   const searchTerm = search.value.trim()
   if (!searchTerm) {
-    alert("add")
+    alert("input must not be empty")
   } else {
    
     getLyrics(searchTerm)
