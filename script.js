@@ -24,12 +24,12 @@ const getLyrics = async (term) => {
 const showData = (songs) => {
   
   const  ulSong=document.createElement("ul")
- ulSong.classList.add("songs")
+ ulSong.classList.add("songs","padding-x")
 
   songs.data.forEach(item => {
 const liSong=document.createElement("li")
     liSong.innerHTML= 
-   ` <div id="cover-lr" class="cover-lr"><img src="${item.album["cover_big"]}"></div><span style="max-width: 300px;"><strong>${item.artist.name}</strong> - ${item.title}</span>
+   ` <div id="cover-lr" class="cover-lr"><img src="${item.album["cover_big"]}"></div><span class="h-limit" style="max-width: 170px;"><strong>${item.artist.name}</strong> - ${item.title}</span>
     <div id="preview-container" class="preview-container">
     <div class="volume-icons-container">
       <span class="vol-icon fa fa-volume-low"></span>
